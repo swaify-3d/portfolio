@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css" />
 
   <script>
-    // Typing animation for the page title
+    // Typing animation for title
     const titleText = "swaify";
     let i = 0;
     function typeTitle() {
       if (i <= titleText.length) {
         document.title = titleText.substring(0, i);
         i++;
-        setTimeout(typeTitle, 200); // speed of typing (ms)
+        setTimeout(typeTitle, 200);
       }
     }
     window.onload = typeTitle;
@@ -23,7 +23,7 @@
 <body>
   <div class="terminal">
     <pre id="output">Initializing...</pre>
-    <button onclick="showPortfolio()">Enter Portfolio</button>
+    <button id="enterBtn" onclick="showPortfolio()">Enter Portfolio</button>
   </div>
 
   <script src="script.js"></script>
