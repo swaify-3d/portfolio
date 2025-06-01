@@ -3,8 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hacked? 🤖</title>
+  <title></title>
   <link rel="stylesheet" href="style.css" />
+
+  <script>
+    // Typing animation for the page title
+    const titleText = "swaify";
+    let i = 0;
+    function typeTitle() {
+      if (i <= titleText.length) {
+        document.title = titleText.substring(0, i);
+        i++;
+        setTimeout(typeTitle, 200); // speed of typing (ms)
+      }
+    }
+    window.onload = typeTitle;
+  </script>
 </head>
 <body>
   <div class="terminal">
