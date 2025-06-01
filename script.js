@@ -1,45 +1,38 @@
-async function getIP() {
-  try {
-    const res = await fetch("https://api.ipify.org?format=json");
-    const data = await res.json();
-    return data.ip;
-  } catch (e) {
-    return "Unable to fetch IP";
-  }
+function showPortfolio() {
+  alert("Redirecting to portfolio... (Not implemented yet)");
 }
 
-function getDeviceInfo() {
-  return {
-    browser: navigator.userAgent,
-    os: navigator.platform,
-    resolution: `${window.screen.width}x${window.screen.height}`,
-  };
-}
-
-async function printInfo() {
+function displayTerminalInfo() {
   const output = document.getElementById("output");
-  const ip = await getIP();
-  const info = getDeviceInfo();
+  const btn = document.getElementById("enterBtn");
 
   const lines = [
-    "[+] Accessing system...",
-    `[+] IP Address: ${ip}`,
-    `[+] Operating System: ${info.os}`,
-    `[+] Browser: ${info.browser}`,
-    `[+] Screen Resolution: ${info.resolution}`,
-    "[+] Tracking enabled... Just kidding 😅",
-    "[+] Loading personal portfolio...",
-    "Press the button to continue."
+    "Initializing...",
+    "Connecting to terminal...",
+    `IP Address: 192.168.1.${Math.floor(Math.random() * 255)}`,
+    `Browser: ${navigator.userAgent}`,
+    `OS: ${navigator.platform}`,
+    `Language: ${navigator.language}`,
+    "Scan complete. All clear ✅"
   ];
 
-  for (let line of lines) {
-    await new Promise(r => setTimeout(r, 800));
-    output.textContent += "\n" + line;
+  let i = 0;
+  output.textContent = "";
+
+  function typeLine() {
+    if (i < lines.length) {
+      output.textContent += lines[i] + "\n";
+      i++;
+      setTimeout(typeLine, 500);
+    } else {
+      btn.classList.add("show");
+    }
   }
+
+  typeLine();
 }
 
-function showPortfolio() {
-  window.location.href = "portfolio.html"; // You can create this page next
-}
-
-printInfo();
+window.onload = () => {
+  typeTitle();
+  displayTerminalInfo();
+};
